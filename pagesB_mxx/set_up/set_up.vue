@@ -41,9 +41,9 @@
 			<view class="flex ju_b aic pt12 pb12 " @click='jump_fuc' data-url='../shenfen/shenfen' :data-shifou='true'>
 				<text class="fs15">实名认证</text>
 				<view class="flex aic">
-					<text class="fs12"  style="color: #FF9102;"  v-if="userinfo.is_rz==2">已认证</text>
-					<text class="fs12 c9" v-else-if="userinfo.is_rz==1">待审核</text>
-					<text class="fs12 c9" v-else-if="userinfo.is_rz==3">不通过</text>
+					<text class="fs12"  style="color: #FF9102;"  v-if="userinfo.is_examine==2">已认证</text>
+					<text class="fs12 c9" v-else-if="userinfo.is_examine==1">待审核</text>
+					<text class="fs12 c9" v-else-if="userinfo.is_examine==3">不通过</text>
 					<text class="fs12 c9" v-else>未认证</text>
 					<text class=" icon-arrow iconfont fs11 c9 pl5"></text>
 				</view>

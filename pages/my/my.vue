@@ -156,7 +156,7 @@
 				service.call(e)
 			},
 			jump_fuc(){
-				if(that.userinfo.is_rz==4){
+				if(that.userinfo.is_examine==4){
 					uni.navigateTo({
 						url:'/pagesB_mxx/shenfen/shenfen'
 					})
