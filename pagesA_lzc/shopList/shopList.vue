@@ -22,10 +22,10 @@
 				</view>
 			</view>
 			
-			<!-- <wangding-pickerAddress @change="cityChange">
-					<text class="fs13">{{city}}</text>
+			<view @click="sx_kg=!sx_kg">
+					<text class="fs13">筛选</text>
 					<text style="margin-top: 10upx;" class="iconfont icon-xiala shanLa1" v-if="city=='地区'"></text>
-			</wangding-pickerAddress> -->
+			</view>
 		</view>
 		<view class="shopListBody" v-for="(item,index) in datas" :key="index">
 			<view class="jvsl" @click="jump" :data-url="'/pagesA_lzc/TradingMarketD/TradingMarketD?id='+item.id">
@@ -41,10 +41,10 @@
 					</view>
 				</view>
 				<view class="jvsl_sl dis_flex">
-					<image :src="getimg(item.img)" mode="aspectFill"></image>
+					<image :src="getimg(item.classify_img)" mode="aspectFill"></image>
 					<view class="oh2 sp_title">
 						<text class="biao ju_c aic">
-							{{item.type}}
+							{{item.classify_title}}
 						</text>
 						<text class="jvsl_slr_title">
 							{{item.title}}
@@ -96,6 +96,25 @@
 		</view>
 		<view v-if="datas.length==0" class="zanwu">暂无数据</view>
 		<view v-if="data_last" class="data_last">到底了~~</view>
+		
+		<view v-if="sx_kg" class="sx_box" :style="'padding-top:'+CustomBar+'px'">
+			<view style="height: 20upx;"></view>
+			<view>
+				<view v-for="(item,index) in datasx" >
+					<view class="sx_tit">{{item.title}}({{item.ptitle}})</view>
+					<view class="dis_flex fww" v-if="item.value.length>0">
+						<view class="sx_item" :class="item1.active?'sx_item1':''" v-for="(item1,index1) in item.value" @click="sx_fuc(item1)">
+							{{item1.title}}
+						</view>
+					</view>
+				</view>
+				<view v-if="datasx.length==0" class="zanwu">暂无筛选类目</view>
+			</view>
+			<view class="sx_btn_s dis_flex aic ju_a">
+				<view @click="sx_kg=false">取消</view>
+				<view @click="sx_qd_fuc">确定</view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -103,6 +122,7 @@
 	import service from '../../components/service.js';
 	import tel from '@/components/data.js'
 	import topbar from '@/components/top_bar/top_bar.vue'
+	import Vue from 'vue'
 	var that
 	var inputt
 	import {
@@ -119,37 +139,17 @@
 				/* 交易市场详情页 */
 				tmd_url: '/pagesA_lzc/TradingMarketD/TradingMarketD',
 				city:'地区',
-				datas:[
-					{
-						hpic:'/static/images/logo.png',
-						tel:'15135725603',
-						img:'/static/images/logo.png',
-						type:'普通公司',
-						title:'汽车用品/电子/清洗/改装专营店',
-						biao:[
-							{
-								text:'可议价',
-								bg:'#FFB017'
-							},
-							{
-								text:'包过户费',
-								bg:'#FF908A'
-							}
-						],
-						type1:'中文+拼音',
-						type2:'家装家具',
-						type3:'中文+拼音',
-						type4:'家装家具',
-						price:'19.00',
-						num:256
-					}
-				],
+				datas:[],
 				showNum:0,
 				shopList_lm:'',
 				search:'',
 				type:'',
 				buy_type:'',
-				data_last:false
+				data_last:false,
+				sx_kg:false,
+				datasx:[],
+				fzn:26,
+				sx_xz:''
 			}
 		},
 		onHide() {
@@ -166,25 +166,66 @@
 			if(option.pid){
 				that.shopList_lm=option.pid
 			}
+			that.sx_xz=''
 			that.onRetry()
+			that.getsxdata()
 		},
 		onShow() {
 				if(that.showNum>0){
 					if(uni.getStorageSync('shopList_lm')){
-						that.shopList_lm=uni.getStorageSync('shopList_lm')
+						console.log("that.shopList_lm!=uni.getStorageSync('shopList_lm')-------------------------.")
+						console.log(that.shopList_lm!=uni.getStorageSync('shopList_lm'))
+						if(that.shopList_lm!=uni.getStorageSync('shopList_lm')){
+							that.sx_xz=''
+							that.shopList_lm=uni.getStorageSync('shopList_lm')
+							that.getsxdata()
+						}
+						
 					}
+					
+					
 					that.onRetry()
 				}
 				that.showNum++
 		},
 		onHide() {
-			uni.setStorageSync('shopList_lm','')
+			// uni.setStorageSync('shopList_lm','')
+			uni.removeStorageSync('shopList_lm')
 		},
 		computed: {
 			...mapState(['hasLogin', 'forcedLogin', 'userName', 'userinfo'])
 		},
 		methods: {
 			...mapMutations(['logout', 'login']),
+			sx_qd_fuc(){
+				var arr=[]
+				for(var i=0;i<that.datasx.length;i++){
+					for(var j=0;j<that.datasx[i].value.length;j++){
+						if(that.datasx[i].value[j].active){
+							arr.push(that.datasx[i].value[j].title)
+						}
+					}
+				}
+				that.sx_xz=arr.join(',')
+				console.log(that.sx_xz)
+				that.sx_kg=false
+				that.onRetry()
+			},
+			sx_fuc(item){
+				if(item.active){
+					Vue.set(item,'active',false)
+					
+				}else{
+					Vue.set(item,'active',true)
+				}
+			},
+			fz(fzn){
+				if(fzn==26){
+					that.fzn=40
+				}else{
+					that.fzn=fzn=26
+				}
+			},
 			daiyan_sousuo(){
 				clearInterval(inputt)
 				inputt = setTimeout(function() {
@@ -206,6 +247,52 @@
 				that.datas=[]
 				that.getdata()
 			},
+			getsxdata(){
+				var jkurl="/trade/search_list"
+				var datas={
+				
+					pid:that.shopList_lm,
+				}
+				
+				service.P_post(jkurl, datas).then(res => {
+					
+					console.log(res)
+					if (res.code == 1) {
+						var datas = res.data
+						console.log(typeof datas)
+				
+						if (typeof datas == 'string') {
+							datas = JSON.parse(datas)
+						}
+						
+						that.datasx=datas
+						
+				
+					} else {
+					
+						if (res.msg) {
+							uni.showToast({
+								icon: 'none',
+								title: res.msg
+							})
+						} else {
+							uni.showToast({
+								icon: 'none',
+								title: '获取筛选失败'
+							})
+						}
+					}
+				}).catch(e => {
+				
+					console.log(e)
+					uni.showToast({
+						icon: 'none',
+						title: '操作失败'
+					})
+				})
+				
+			},
+			
 			getdata(){
 				var jkurl="/trade/list"
 				var datas={
@@ -215,7 +302,8 @@
 					limit:20,
 					pid:that.shopList_lm,
 					sort:that.isPai?1:2,
-					search:that.search
+					search:that.search,
+					params_search:that.sx_xz
 				}
 				if(that.type==4){
 					datas={
@@ -225,7 +313,8 @@
 						limit:20,
 						pid:that.shopList_lm,
 						sort:that.isPai?1:2,
-						search:that.search
+						search:that.search,
+					params_search:that.sx_xz
 					}
 				}
 				if(that.data_last == true){
@@ -538,5 +627,59 @@
 			font-family: PingFang SC;
 			font-weight: 400;
 			color: #333333;
+		}
+		
+		
+		.sx_box{
+			width: 100%;
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: 900;
+			background: #fff;
+			overflow-y: scroll;
+			padding: 30upx;
+			padding-bottom: 150upx;
+		}
+		.sx_btn_s{
+			position: fixed;
+			bottom: 0;
+			z-index: 990;
+			left: 0;
+			width: 100%;
+			width: 100%;
+			height: 150upx;
+			background: #fff;
+		}
+		.sx_btn_s view{
+			width: 160upx;
+			height: 60upx;
+			border-radius: 30upx;
+			border: 1px solid #FFB017;
+			font-size: 26upx;
+			color: #FFB017;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.sx_tit{
+			font-size: 32upx;
+			font-weight: bold;
+			line-height: 100upx;
+		}
+		.sx_item{
+			padding: 2px 12upx;
+			border: 1px solid #ddd;
+			font-size: 26upx;
+			color: #333;
+			border-radius: 12upx;
+			margin: 6upx;
+		}
+		.sx_item1{
+			border: 1px solid #F43B31;
+			background: #F43B31;
+			color: #fff;
 		}
 </style>

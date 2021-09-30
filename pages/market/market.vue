@@ -69,7 +69,7 @@
 						<!-- <view v-for="(item,index) in hzList" :key="index" class="hzList_my -->
 						<view v-for="(item,index) in hzList" :key="index" class="hzList_my" @click="jump" :data-url="'/pagesA_lzc/shopList/shopList?type=4&buy_type=1&pid='+item.id">
 							<image  :src="getimg(item.img)"
-								mode="aspectFill" style="width: 41upx;height: 41upx;"></image>
+								mode="aspectFill" style="width: 61upx;height: 61upx;"></image>
 							<view class="hsl_text11">{{item.title}}</view>
 						</view>
 					</view>
@@ -78,75 +78,9 @@
 			</view>
 
 			<!-- 交易市场 -->
-			<view class="jiaoView bs">
-				<view class="commfl dis_flex ju_b aic">
-					<view class="commfll bs dis_flex aic"
-						style="background: linear-gradient(90deg, #FF1818 0%, #FF6B5F 100%)">
-						<text>资质出售</text>
-					</view>
-					<view class="commflr bs dis_flex aic"  @click="jump" 
-							data-url="/pagesA_lzc/shopList/shopList?type=1">
-						<text>更多</text>
-						<text class="iconfont icon-arrow"></text>
-					</view>
-				</view>
-				<view class="jvsl" @click.stop="jump" :data-url="'/pagesA_lzc/TradingMarketD/TradingMarketD?id='+item.id" v-for="(item,index) in zzchu" :key="index">
-					<view class="jvslView dis_flex ju_b bs">
-						<view class="jvsl_fl dis_flex aic">
-							<image :src="item.img" mode="widthFix"></image>
-							<text class="tel">{{getTel(item.phone)}}</text>
-						</view>
-						<view class="jvsl_fr dis_flex aic">
-							<text class="iconfont icon-yanjing"></text>
-							<text class="tel">{{item.view}}</text>
-							<text class="tel">浏览</text>
-						</view>
-					</view>
-					<view class="jvsl_sl dis_flex">
-						<image :src="getimg(item.classify_img)" mode="heightFix"></image>
-						<view class="oh2" style="margin-left: 12upx;">
-							<text class="biao1">{{item.classify_title}}</text>
-							<text style="margin-left: 0.25rem;" class="textBiao1">{{item.title}}</text>
-						</view>
-					</view>
-					<!-- 标签 -->
-					<view v-if="item.label_arr&&item.label_arr.length>0" class="myTag bs dis_flex aic">
-						<view class="tagItem" :style="{'background-color':item1.color}"
-							v-for="(item1,index1) in item.list">
-							<text>{{item1.title}}</text>
-						</view>
-					</view>
-					<!-- 基本属性 -->
-					<!-- <view class="flex flex-between pl10  pr10">
-						<view class="flex flex-col  pt10 lh13">
-							<view class="">
-								<text class=" fs12 " style="color: #DDDDDD;">组合类型：</text>
-								<text class="fs12 c9">中文+拼音</text>
-							</view>
-							<view class="">
-								<text class=" fs12 " style="color: #DDDDDD;">商标类型：</text>
-								<text class="fs12 c9">R标</text>
-							</view>
-
-						</view>
-						<view class="flex flex-col pt10 lh13">
-							<view class="">
-								<text class=" fs12 " style="color: #DDDDDD;">网店类目：</text>
-								<text class="fs12 c9">家装家具</text>
-							</view>
-							<view class="">
-								<text class=" fs12 " style="color: #DDDDDD;">创店时间：</text>
-								<text class="fs12 c9">2021-12-11</text>
-							</view>
-
-						</view>
-					</view> -->
-					<view class="price bs">
-						<text style="font-size: 36upx;font-weight: bold;">19.00</text>
-						<text style="font-size: 24upx;">元</text>
-					</view>
-				</view>
-			</view>
+			<!-- http://www.yunlang.club/#/ -->
+			<image @click="jump" data-type="web"  :data-url="'http://www.yunlang.club/#/'" class="gczb_btn" src="../../static/images/gczb.png" mode="aspectFit"  :data-login='true' :data-hasLogin='hasLogin'></image>
+			
 			<!-- 资质求购 -->
 			<view class="qiuView bs">
 				<view class="qfl dis_flex ju_b aic">
@@ -1448,5 +1382,13 @@
 		width: 20%;
 		box-sizing: border-box;
 		text-align: center;
+	}
+	
+	
+	
+	.gczb_btn{
+		width: 690rpx;
+		height: 120rpx;
+		margin-top: 20rpx;
 	}
 </style>

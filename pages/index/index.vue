@@ -78,7 +78,7 @@
 						</uni-notice-bar>
 					</view>
 				</view>
-
+				<image @click="jump" data-type="web"  :data-url="'http://www.yunlang.club/#/'" class="gczb_btn" src="../../static/images/gczb.png" mode="aspectFit"  :data-login='true' :data-hasLogin='hasLogin'></image>
 				<!-- 热门推荐 -->
 				<view class="hotView" id="hotView">
 					<!-- 热门推荐 -->
@@ -87,7 +87,8 @@
 						<view class="hotView_l hotView_fl bs dis_flex_c">
 							<view class="hfl dis_flex ju_b aic">
 								<view class="hfll bs dis_flex aic">
-									<text>热门推荐</text>
+									<!-- <text>热门推荐</text> -->
+									<text>转让专区</text>
 								</view>
 								<view class="hflr bs dis_flex aic"  @click="jump" 
 							    :data-url="'/pagesA_lzc/shopList/shopList?type=4&buy_type=1'">
@@ -113,7 +114,8 @@
 						<view class="hotView_l hotView_sl">
 							<view class="hfl dis_flex ju_b aic">
 								<view class="hsll bs dis_flex aic">
-									<text>热门专区</text>
+									<!-- <text>热门专区</text> -->
+									<text>办理专区</text>
 								</view>
 								<view class="hflr bs dis_flex aic" @click="jump" 
 							    :data-url="'/pagesA_lzc/zhao/zhao'">
@@ -225,7 +227,7 @@
 				<view id="a_4" class="myBidding bs" @click="jump" data-url="/pagesB_mxx/Bidding_market/Bidding_market">
 					<view class="bfl dis_flex ju_b aic">
 						<view class="bfll bs dis_flex aic">
-							<text>招标市场</text>
+							<text>办理市场</text>
 						</view>
 						<view class="bflr bs dis_flex aic">
 							<text>更多</text>
@@ -434,7 +436,7 @@
 					},
 					{
 						id: 3,
-						text: '招标市场',
+						text: '办理市场',
 						url: '/pagesB_mxx/Bidding_market/Bidding_market',
 						isActive: false,
 						nUrl: 'myBidding'
@@ -1185,8 +1187,8 @@
 							height: 100%;
 
 							image {
-								height: 41upx;
-								width: 40upx;
+								height: 60upx;
+								width: 60upx;
 							}
 
 							.hsl_text {
@@ -1884,5 +1886,13 @@
 		// height:  calc(100vh - 104upx - 45px);
 		// top: calc(104upx + 45px);
 		// /* #endif */
+	}
+	
+	
+	
+	.gczb_btn{
+		width: 690rpx;
+		height: 120rpx;
+		margin-top: 20rpx;
 	}
 </style>

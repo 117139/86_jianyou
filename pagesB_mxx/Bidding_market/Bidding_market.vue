@@ -3,7 +3,8 @@
 	<view class="content">
 		<topbar bg_color="#F43B31" text_color="#fff" :have_top="true">
 			<text class="icon-fanhui iconfont" style="color: #FFFFFF;" @click="fanhui"> </text>
-			<text class=" " style="color: #FFFFFF;">招标市场</text>
+			<!-- <text class=" " style="color: #FFFFFF;">招标市场</text> -->
+			<text class=" " style="color: #FFFFFF;">办理市场</text>
 			<text class="pr10 fs14" style="color: #FFFFFF;"> </text>
 		</topbar>
 		<view class=" pl15 pr15 pb35  pt12" style="background-color: #F43B31;">

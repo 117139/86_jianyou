@@ -34,7 +34,8 @@
 					<view class="flex">
 						<image src="/static/images/ma/biaozhi.png" mode="aspectFill" class="biaozhi"></image>
 						<view class="flex flex-col pl12">
-							<text class="ju fs14 pt3">招标市场</text>
+							<!-- <text class="ju fs14 pt3">招标市场</text> -->
+							<text class="ju fs14 pt3">办理市场</text>
 							<text class="c9 fs12 pt5">交易过程更加安心便捷</text>
 						</view>
 					</view>
@@ -42,8 +43,21 @@
 					</image>
 				</view>
 			</view>
-			
-			<!-- 我的订单 -->
+			<view class="relative" style="z-index: 88;">
+				<view class="ka  ml15 flex p15 flex mt15 ju_b"  @click="jump" data-type="web"  :data-url="'http://www.yunlang.club/#/'" :data-login='true' :data-hasLogin='hasLogin'>
+					<view class="flex">
+						<image src="/static/images/ma/biaozhi.png" mode="aspectFill" class="biaozhi"></image>
+						<view class="flex flex-col pl12">
+							<text class="ju fs14 pt3">工程招标</text>
+							<text class="c9 fs12 pt5">交易过程更加安心便捷</text>
+						</view>
+					</view>
+					<image src="/static/images/ma/go.png" mode="aspectFill" class="go" >
+					</image>
+				</view>
+			</view>
+				<!-- 我的订单 -->
+			<!-- <view class="ka  ml15 pt12"> -->
 			<view class="ka  ml15 mt15 pt12">
 				<text class=" fwb fs16 pl15 ">我的订单</text>
 				<view class="width flex mt10">
@@ -389,4 +403,5 @@
 		/* margin-top: -140rpx; */
 		padding-bottom: 30rpx;
 	}
+	
 </style>

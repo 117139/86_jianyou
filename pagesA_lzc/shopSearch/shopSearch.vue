@@ -136,11 +136,11 @@
 						url: '',
 						isActive: true
 					},
-					{
-						text: '出售',
-						url: '',
-						isActive: false
-					},
+					// {
+					// 	text: '出售',
+					// 	url: '',
+					// 	isActive: false
+					// },
 					{
 						text: '转让',
 						url: '',
@@ -193,13 +193,19 @@
 				if (that.activeOne == 0) {
 					that.MyType = 3;
 				}
+				// if (that.activeOne == 1) {
+				// 	that.MyType = 1;
+				// }
+				// if (that.activeOne == 2) {
+				// 	that.MyType = 2;
+				// }
+				// if (that.activeOne == 3) {
+				// 	that.MyType = 0;
+				// }
 				if (that.activeOne == 1) {
-					that.MyType = 1;
-				}
-				if (that.activeOne == 2) {
 					that.MyType = 2;
 				}
-				if (that.activeOne == 3) {
+				if (that.activeOne == 2) {
 					that.MyType = 0;
 				}
 				that.onRetry()

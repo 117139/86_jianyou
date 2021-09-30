@@ -7,17 +7,18 @@
 				<image src="/static/images/lzc/fa/qiu.png" mode="heightFix"></image>
 				<text class="fs15 fw500">求购</text>
 			</view>
-			<view class="navItem dis_flex_c ju_c aic" @click="jump" data-url="/pagesA_lzc/faQiu/faQiu?id=出售" :data-login='true' :data-hasLogin='hasLogin'>
+			<!-- <view class="navItem dis_flex_c ju_c aic" @click="jump" data-url="/pagesA_lzc/faQiu/faQiu?id=出售" :data-login='true' :data-hasLogin='hasLogin'>
 				<image src="/static/images/lzc/fa/shou.png" mode="heightFix"></image>
 				<text class="fs15 fw500">出售</text>
-			</view>
+			</view> -->
 			<view class="navItem dis_flex_c ju_c aic" @click="jump" data-url="/pagesA_lzc/faQiu/faQiu?id=转让" :data-login='true' :data-hasLogin='hasLogin'>
 				<image src="/static/images/lzc/fa/ran.png" mode="heightFix"></image>
 				<text class="fs15 fw500">转让</text>
 			</view>
 			<view class="navItem dis_flex_c ju_c aic" @click="jump" :data-url="zhaoUrl" :data-login='true' :data-hasLogin='hasLogin'>
 				<image src="/static/images/lzc/fa/zhao.png" mode="heightFix"></image>
-				<text class="fs15 fw500">招标</text>
+				<!-- <text class="fs15 fw500">招标</text> -->
+				<text class="fs15 fw500">办理</text>
 			</view>
 		</view>
 		<view class="footfa dis_flex aic ju_c">

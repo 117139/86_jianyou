@@ -529,8 +529,8 @@
 			},
 			share() {
 				uni.shareWithSystem({
-					summary: '欢迎使用',
-					href: 'https://www.baidu.com/',
+					summary: '犀牛并购',
+					href: 'https://jianyou365.com.a.800123456.vip/apk/jy_share/index.html?id='+that.myid,
 					success() {
 						// 分享完成，请注意此时不一定是成功分享
 					},

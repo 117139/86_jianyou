@@ -325,7 +325,7 @@
 			currentMessageList(newVal, oldVal) {
 				this.msgList = newVal
 				console.log('页面收到消息')
-				// console.log(this.msgList)
+				console.log(this.msgList)
 				
 				if(newVal.length>0){
 					if(newVal[newVal.length-1].fromTo==2){
@@ -647,18 +647,20 @@
 							datas = JSON.parse(datas)
 						}
 						console.log(datas)
+						var ConversationActive={
+							id:res.classId,
+							to_uid:res.user.toInfo.id
+						}
+						this.$store.commit('updateConversationActive', ConversationActive)
 						
 						// this.isCompleted = res.data.isCompleted
 						if(datas.length>0){
+							
 							that.$store.commit('pushCurrentMessageList', datas)
 							that.page=res.page // 用于续拉，分页续拉时需传入该字段。
 							that.scrollToView ='a_'+datas[datas.length - 1].id
 						}else{
-							var ConversationActive={
-								id:res.classId,
-								to_uid:res.user.toInfo.id
-							}
-							this.$store.commit('updateConversationActive', ConversationActive)
+							
 						}
 						
 							// that.msgList = datas

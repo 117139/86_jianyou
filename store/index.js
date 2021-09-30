@@ -26,7 +26,7 @@ const store = new Vuex.Store({
 		toUserId: '', //聊天对象id
 		conversationList: [], //会话列表
 		currentMessageList: [], //消息列表
-		// ws_url:'ws://121.40.53.199:2347',
+		// ws_url:'ws://192.168.0.117:2347',
 		ws_url:'ws://www.jianyou365.com.a.800123456.vip:2347'
 	},
 	mutations: {

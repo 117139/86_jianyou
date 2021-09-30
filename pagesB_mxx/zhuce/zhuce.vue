@@ -125,7 +125,7 @@
 				}
 				that.bntkg=1
 				service.P_post('/sign/SmsCode', data).then(res => {
-					
+						that.bntkg=0
 					console.log(res)
 					if (res.code == 1) {
 						var datas = res.data
