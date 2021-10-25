@@ -132,6 +132,7 @@
 			this.price =e.price;
 		},
 		onShow() {
+			that.btnkg=0
 			console.log(that.platform)
 		},
 
@@ -171,10 +172,10 @@
 					code:that.id
 				}
 				console.log(data)
-				if(that.btn_kg==1){
+				if(that.btnkg==1){
 					return
 				}
-				that.btn_kg=1
+				that.btnkg=1
 				// return
 				uni.showLoading({
 					mask:true,
@@ -188,9 +189,7 @@
 						var datas = res.data
 						console.log(typeof datas)
 				
-						if (typeof datas == 'string') {
-							datas = JSON.parse(datas)
-						}
+						
 						// wx.showToast({
 						// 	title: '支付成功',
 						// 	icon: 'none',
@@ -218,7 +217,8 @@
 								provider: 'alipay',
 								orderInfo: datas, //微信、支付宝订单数据
 								success: function(res) {
-									console.log('success:' + JSON.stringify(res));
+									// console.log('success:' + JSON.stringify(res));
+									console.log('success:' + res);
 									that.shows =false
 									wx.showToast({
 										title: '支付成功',
@@ -235,7 +235,8 @@
 								},
 								fail: function(err) {
 									that.btnkg = 0
-									console.log('fail:' + JSON.stringify(err));
+									// console.log('fail:' + JSON.stringify(err));
+									console.log('fail:' + err);
 									uni.showModal({
 										content: "支付失败",
 										showCancel: false
@@ -276,7 +277,7 @@
 						}
 						
 					} else {
-						that.btn_kg = 0
+						that.btnkg = 0
 						// that.$refs.htmlLoading.htmlReset_fuc(1)
 						if (res.msg) {
 							uni.showToast({
@@ -291,14 +292,14 @@
 						}
 						
 						setTimeout(function(){
-							that.btn_kg = 0
+							that.btnkg = 0
 							uni.redirectTo({
 								url:'/pagesB_mxx/My_transaction/My_transaction'
 							})
 						},1000)
 					}
 				}).catch(e => {
-					that.btn_kg = 0
+					that.btnkg = 0
 					console.log(e)
 					uni.showToast({
 						icon: 'none',

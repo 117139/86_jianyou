@@ -85,6 +85,11 @@
                 "payment" : {
                     "alipay" : {
                         "__platform__" : [ "android" ]
+                    },
+                    "weixin" : {
+                        "__platform__" : [ "android" ],
+                        "appid" : "wx3abe420195f3227b",
+                        "UniversalLinks" : ""
                     }
                 },
                 "oauth" : {},
