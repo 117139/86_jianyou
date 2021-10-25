@@ -197,10 +197,10 @@
 					})
 					return
 				}
-				if(that.bntkg==1){
+				if(that.btnkg==1){
 					return
 				}
-				that.bntkg=1
+				that.btnkg=1
 				let data = {
 					phone:this.phone,
 					code:this.code,
@@ -267,13 +267,14 @@
 					return
 				}
 				
-				if(that.bntkg==1){
+				if(that.btnkg==1){
 					return
 				}
-				that.bntkg=1
+				that.btnkg=1
 				service.P_post('/sign/SmsCode', {
 					phone: this.phone
 				}).then((res) => {
+					
 					console.log(res)
 					if(res.code == 1){
 						that.btnkg = 0
@@ -291,6 +292,8 @@
 							that.disabled = false
 							that.changess = true;
 						}, 60000)
+					}else{
+						that.btnkg = 0
 					}
 				}).catch(e => {
 					that.btnkg = 0
