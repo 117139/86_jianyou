@@ -5,7 +5,9 @@ import store from '../store/index.js'
 const USERS_KEY = 'USERS_KEY';
 const STATE_KEY = 'STATE_KEY';
 const map_key = "7FEBZ-WLWK2-PMGUE-C4BFT-EKXB6-BFFNR"
-const imgurl = "https://jianyou365.com.a.800123456.vip/"
+// const imgurl = "https://jianyou365.com.a.800123456.vip/"
+const imgurl = "https://jianyou365.com/"
+
 const IPurl = imgurl + 'api/'
 /**
  * 请求头

@@ -33,7 +33,8 @@
 				<image class="rimg" :src="getimg('/static_s/images/lzc/commin/dui.png')" mode="aspectFit"></image>
 			</view>
 		</view>
-		<view v-if="platform != 'android'" class="TO_price dis_flex aic ju_b">
+		<!-- ios -->
+		<!-- <view v-if="platform != 'android'" class="TO_price dis_flex aic ju_b">
 			<view class="dis_flex aic">
 				<image class="icon_img" :src="getimg('/static_s/images/lzc/pay/ping.png')" mode="aspectFit"></image>
 				<text class="fs15 fw400 price1">苹果支付</text>
@@ -41,7 +42,7 @@
 			<view class="dis_flex aic ju_c" :class="[isActive==3?'radio1':'radio2']" @click="radioClick(3)">
 				<image class="rimg" :src="getimg('/static_s/images/lzc/commin/dui.png')" mode="aspectFit"></image>
 			</view>
-		</view>
+		</view> -->
 		<!-- <view class="TO_price dis_flex aic ju_b">
 			<view class="dis_flex aic">
 				<image class="icon_img" :src="getimg('/static/images/lzc/pay/wei.png')" mode="widthFix"></image>

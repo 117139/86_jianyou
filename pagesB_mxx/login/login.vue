@@ -43,12 +43,12 @@
 			:data-shifou='true'>
 			<text class="fs14" style="color: #FF1919;">忘记密码</text>
 		</view>
-		<view class=" fs14 c2 flex aic ju_c pt35 mt35">
+		<view  v-if="platform == 'android'" class=" fs14 c2 flex aic ju_c pt35 mt35">
 			——————— 其他登录方式 ——————
 		</view>
 		<!-- @click='jump' data-url='../shoujih/shoujih' :data-shifou='true' -->
-		<view class="flex ju_c pt30">
-			<image src="/static/images/ma/weix.png" mode="aspectFill" class="weix "></image>
+		<view  v-if="platform == 'android'" class="flex ju_c pt30">
+			<image src="/static/images/ma/weix.png" mode="aspectFill" class="weix "  @tap="loginByWeixin"></image>
 		</view>
 	</view>
 </template>
@@ -88,10 +88,113 @@
 		},
 
 		computed: {
-			...mapState(['hasLogin', 'forcedLogin', 'userName', 'userinfo'])
+			...mapState(['hasLogin', 'forcedLogin', 'userName', 'userinfo','platform'])
 		},
 		methods: {
 			...mapMutations(['logout', 'login']),
+			loginByWeixin(){
+				if(that.platform=='ios'){
+					return
+				}
+				uni.showLoading({
+					mask:true,
+					title:'正在登录'
+				})
+				uni.login({
+				  provider: 'weixin',
+				  success: function (loginRes) {
+				    console.log(loginRes.authResult);
+				    // 获取用户信息
+				    uni.getUserInfo({
+				      provider: 'weixin',
+				      success: function (infoRes) {
+				        console.log('用户昵称为：' + infoRes.userInfo.nickName);
+								
+								
+								
+								var  jkurl='/sign/sign'
+								var datas={
+									type:2,
+									wx_applet_openid:loginRes.authResult.openid
+								}
+								
+								
+								service.P_post(jkurl, datas).then(res => {
+									that.btn_kg = 0
+									console.log(res)
+									if (res.code == -2) {
+										uni.showToast({
+											icon: 'none',
+											title: res.msg
+										})
+										
+										setTimeout(()=>{
+											uni.redirectTo({
+												url: '/pages/weixin/weixin?openid=' + loginRes.authResult.openid+'&type='+2
+											})
+										},1000)
+										
+										return
+									}
+									if (res.code == 1) {
+										var datas = res.data
+										console.log(typeof datas)
+								
+										if (typeof datas == 'string') {
+											datas = JSON.parse(datas)
+										}
+									
+										uni.showToast({
+											icon: 'none',
+											title: '登录成功'
+										});
+										uni.setStorageSync('token', datas.token)
+										uni.setStorageSync('userinfo', datas)
+										// uni.setStorageSync('userId', datas.id)
+										// uni.setStorageSync('loginmsg', datas)
+										that.login(datas)
+										setTimeout(()=>{
+											uni.navigateBack({
+												delta:1
+											})
+										},1000)
+										
+									} else {
+										if (res.msg) {
+											uni.showToast({
+												icon: 'none',
+												title: res.msg
+											})
+										} else {
+											uni.showToast({
+												icon: 'none',
+												title: '操作失败'
+											})
+										}
+									}
+								}).catch(e => {
+									that.btn_kg = 0
+									console.log(e)
+									uni.showToast({
+										icon: 'none',
+										title: '操作失败'
+									})
+								})
+				      }
+				    });
+				  },
+					fail: function (err) {
+						console.log(err);
+						uni.showToast({  
+								title: '登陆失败',  
+								icon: 'none'  
+						})  
+						
+						
+						
+					}
+				});
+			},
 			getimg(img) {
 				return service.getimg(img)
 			},

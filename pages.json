@@ -47,7 +47,16 @@
 			}
 		}
 
-	],
+	    ,{
+            "path" : "pages/weixin/weixin",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "绑定手机号",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"subPackages": [{
 
 		"root": "pagesA_lzc",

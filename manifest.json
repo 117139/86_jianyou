@@ -1,4 +1,4 @@
-{
+https://jianyou365.com{
     "name" : "犀牛并购",
     "appid" : "__UNI__B99FD8E",
     "description" : "犀牛并购",
@@ -35,7 +35,8 @@
         "modules" : {
             "Share" : {},
             "Payment" : {},
-            "Maps" : {}
+            "Maps" : {},
+            "OAuth" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -56,6 +57,7 @@
                     "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
                     "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
                     "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+                    "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
                     "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
@@ -89,10 +91,16 @@
                     "weixin" : {
                         "__platform__" : [ "android" ],
                         "appid" : "wx3abe420195f3227b",
-                        "UniversalLinks" : ""
+                        "UniversalLinks" : "https://jianyou365.com"
                     }
                 },
-                "oauth" : {},
+                "oauth" : {
+                    "weixin" : {
+                        "appid" : "wx3abe420195f3227b",
+                        "appsecret" : "cdfeaab367851f798adf23648be4a7f5",
+                        "UniversalLinks" : "https://jianyou365.com"
+                    }
+                },
                 "maps" : {
                     "amap" : {
                         "appkey_ios" : "61fca32a53af964ea08d08d5531f0edd",
