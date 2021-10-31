@@ -26,7 +26,7 @@
 					<image class="rimg" :src="getimg('/static_s/images/lzc/commin/dui.png')" mode="aspectFit"></image>
 				</view>
 			</view>
-			<view v-if="platform != 'android'" class="TO_price dis_flex aic ju_b">
+			<!-- <view v-if="platform != 'android'" class="TO_price dis_flex aic ju_b">
 				<view class="dis_flex aic">
 					<image class="icon_img" :src="getimg('/static_s/images/lzc/pay/ping.png')" mode="aspectFit"></image>
 					<text class="fs15 fw400 price1">苹果支付</text>
@@ -34,7 +34,7 @@
 				<view class="dis_flex aic ju_c" :class="[isActive==3?'radio1':'radio2']" @click="radioClick(3)">
 					<image class="rimg" :src="getimg('/static_s/images/lzc/commin/dui.png')" mode="aspectFit"></image>
 				</view>
-			</view>
+			</view> -->
 			<view class="flex aic ju_c fun cf fs16" style="margin-top: 150rpx;" @click="sub_fuc">
 				保存
 			</view>
@@ -50,6 +50,7 @@
 		mapState,
 		mapMutations
 	} from 'vuex'
+	var productIds
 	export default {
 		data() {
 			return {

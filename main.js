@@ -9,7 +9,7 @@ import url from './components/service.js'
 import topbar from './components/top_bar/top_bar.vue'
 
 
-	import more from './components/more/more.vue'
+import more from './components/more/more.vue'
 // 地址控件
 // 剪裁头像
 import avatar from "./components/yq-avatar/yq-avatar.vue";

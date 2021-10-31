@@ -1,6 +1,6 @@
 <template>
 
-	<view class="content">
+	<view  v-if="shuju.list" class="content">
 		<!--bg_color="#ff0000"-->
 		<!-- <topbar bg_color="#F43B31">
 			<text @click="back" style="color: #fff;" class="iconfont icon-back-line backIcon"></text>
@@ -182,7 +182,7 @@
 		</view>
 		
 		<!-- 跟踪服务 -->
-		<view class="demand dis_flex ju_b aic">
+		<view  class="demand dis_flex ju_b aic">
 			<view class="pro_fl bs dis_flex aic" style="border: none;" @click="jump" :data-url="'/pagesA_lzc/track/track?id='+myid">
 				<view class="redGan"></view>
 				<view class="redText">跟踪服务</view>

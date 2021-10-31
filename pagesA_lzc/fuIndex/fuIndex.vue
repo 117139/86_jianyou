@@ -105,7 +105,7 @@
 				<view class="redGan"></view>
 				<text class="titleRed">个人资料</text>
 			</view>
-			<view class="personal_data_view dis_flex_c flex-left">
+			<view v-if="shuju" class="personal_data_view dis_flex_c flex-left">
 				<view class="pdi" style="margin-top: 20upx;">
 					<text class="pd_text1">年龄:</text>
 					<text class="pd_text1 pd_text3">{{shuju.age}}</text>
@@ -213,7 +213,7 @@
 					margin: 1
 				},
 				isShowQuan: true,
-				shuju: {},
+				shuju: '',
 				myId: 0,
 				activeOne: 1,
 				pinList:{},

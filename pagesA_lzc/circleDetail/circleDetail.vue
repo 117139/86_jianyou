@@ -11,7 +11,7 @@
 			<view class="CD_cart" v-if="titleShu.list">
 				<view class="CD_cart_item dis_flex aic">
 					<image :src="getimg(titleShu.list.pic)" mode="aspectFill" @click.stop="jump"
-						data-url="/pagesA_lzc/fuIndex/fuIndex"></image>
+						:data-url="'/pagesA_lzc/fuIndex/fuIndex?id='+titleShu.list.id"></image>
 					<view class="cd_cart_center">
 						<text class="3c_text">{{titleShu.list.title}}</text>
 						<view class="cd_cc_sl dis_flex ju_b">

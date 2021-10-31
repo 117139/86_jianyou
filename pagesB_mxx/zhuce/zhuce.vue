@@ -43,8 +43,9 @@
 		<view class="funs flex aic ju_c cf ml35 mt35" @click="zhuce">
 			注册
 		</view>
-		<view class="dis_flex aic ju_c pt12">
-			<text class="fs14 c9">注册代表您已同意</text>
+		<view class="dis_flex aic ju_c pt12" @click="yd_type=!yd_type">
+			<text class="iconfont icon-link_lianjiedian yd_btn" :class="{active:yd_type==true}"></text>
+			<text class="fs14 c9">我已阅读并同意</text>
 			<text class="fs14" style="color: #FF1919;" @click='jump' data-url='../About/About?key=zcxy'
 				:data-shifou='true'>《用户注册协议》</text>
 			<text class="fs14" style="color: #FF1919;" @click='jump' data-url='../About/About?key=ysxy'
@@ -75,7 +76,8 @@
 				type_password: "password",
 				phone: '',
 				code: '',
-				pass: ''
+				pass: '',
+				yd_type:false
 			};
 		},
 		onHide() {
@@ -185,6 +187,13 @@
 					code: this.code
 				};
 				console.log(typeof(data.type))
+				if(!that.yd_type){
+					wx.showToast({
+						icon: 'none',
+						title: '请先阅读注册协议和隐私协议'
+					})
+					return
+				}
 				if (that.phone == '' || !(/^1\d{10}$/.test(that.phone))) {
 					wx.showToast({
 						icon: 'none',
@@ -206,6 +215,7 @@
 					})
 					return
 				}
+				
 				if(that.bntkg==1){
 					return
 				}
@@ -289,5 +299,12 @@
 		height: 90rpx;
 		background: #FF1919;
 		border-radius: 45rpx;
+	}
+	.yd_btn{
+		color: #999;
+		margin-right: 8rpx;
+	}
+	.active{
+		color: #FF1919;
 	}
 </style>
