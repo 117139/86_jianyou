@@ -84,6 +84,9 @@
 		<view class=" p15 bgcf flex aic ju_c   mt10" @click="myloginOut">
 			<text class="fs15" style="color: #FF1919;"> 退出登录</text>
 		</view>
+		<view class=" p15 bgcf flex aic ju_c   mt10" @click="zx_id">
+			<text class="fs15" style="color: #FF1919;"> 注销账号</text>
+		</view>
 	</view>
 </template>
 
@@ -192,6 +195,94 @@
 				// 	}
 				// })
 
+			},
+			zx_id(){
+				uni.showModal({
+				    title: '提示',
+				    content: '是否注销账号，账号注销后不可恢复',
+				    success: function (res) {
+				        if (res.confirm) {
+				            console.log('用户点击确定');
+										var jkurl = "/user/cancellation"
+										var datas = {
+											// type: that.type,
+											// search: '',
+											// page: that.page,
+											// limit: 4
+										}
+										console.log(that.data_last)
+										if (that.data_last == true) {
+											return
+										}
+										console.log(that.btnkg)
+										if (that.btnkg == 1) {
+											return
+										} else {
+											that.btnkg = 1
+										}
+										uni.showLoading({
+											mask: true,
+											title: '正在提交'
+										})
+										// var page_now = that.page
+										service.P_post(jkurl, datas).then(res => {
+											that.btnkg = 0
+											console.log(res)
+											if (res.code == 1) {
+												var datas = res.data
+												console.log(typeof datas)
+										
+												if (typeof datas == 'string') {
+													datas = JSON.parse(datas)
+												}
+												uni.showToast({
+													icon: 'none',
+													title: '提交成功'
+												})
+												setTimeout(function(){
+													that.btnkg = 0
+													that.logout();
+													uni.removeStorageSync('userInfo');
+													uni.removeStorageSync('token');
+													uni.reLaunch({
+														url:'/pages/index/index'
+													})
+												},1000)
+										
+										
+											} else {
+												that.btnkg = 0
+												if (res.msg) {
+													uni.showToast({
+														icon: 'none',
+														title: res.msg
+													})
+												} else {
+													uni.showToast({
+														icon: 'none',
+														title: '操作失败'
+													})
+												}
+											}
+										}).catch(e => {
+											that.btnkg = 0
+											console.log(e)
+											uni.showToast({
+												icon: 'none',
+												title: '操作失败'
+											})
+										})
+										// that.logout();
+										// uni.removeStorageSync('userInfo');
+										// uni.removeStorageSync('token');
+										// uni.reLaunch({
+										// 	url:'/pages/index/index'
+										// })
+				        } else if (res.cancel) {
+				            console.log('用户点击取消');
+				        }
+				    }
+				});
 			},
 			myloginOut(){
 				uni.showModal({

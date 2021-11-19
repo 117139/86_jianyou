@@ -151,8 +151,9 @@
 				</button>
 			</view>
 			<view v-if="shuju.is_my==2" class="footRight dis_flex ju_b">
-				<view class="dis_flex ju_c aic" @click="jump" :data-url="'/pagesA_lzc/pay/pay?price='+shuju.info.price+'&id='+shuju.info.id">立即购买</view>
-				<view  class="dis_flex ju_c aic" @click="jump" :data-url="'/pagesA_lzc/chat/chat?toid='+shuju.userInfo.id">联系卖家</view>
+				<!-- <view class="dis_flex ju_c aic" @click="jump" :data-url="'/pagesA_lzc/pay/pay?price='+shuju.info.price+'&id='+shuju.info.id">立即购买</view>
+				<view  class="dis_flex ju_c aic" @click="jump" :data-url="'/pagesA_lzc/chat/chat?toid='+shuju.userInfo.id">联系卖家</view> -->
+				<view  class="dis_flex ju_c aic lxmj_btn" @click="jump" :data-url="'/pagesA_lzc/chat/chat?toid='+shuju.userInfo.id">联系卖家</view>
 				
 			</view>
 			<!-- <view class="flex_1"></view> -->
@@ -831,6 +832,17 @@
 					color: #FFFFFF;
 					line-height: 23upx;
 
+				}
+				view.lxmj_btn{
+					width: 380upx;
+					height: 72upx;
+					background: #F43B31;
+					border-radius: 36px;
+					font-size: 28upx;
+					font-family: PingFang SC;
+					font-weight: 400;
+					color: #FFFFFF;
+					line-height: 23upx;
 				}
 			}
 		}

@@ -328,9 +328,9 @@
 					<text class="fl_text">客服</text>
 				</button>
 			</view>
-			<view v-if="shuju.is_my==2" class="f_right ju_c aic dis_flex" @click="jump" :data-url="'/pagesA_lzc/zhaobiao_pay/zhaobiao_pay?id='+shuju.list.id">
+			<!-- <view v-if="shuju.is_my==2" class="f_right ju_c aic dis_flex" @click="jump" :data-url="'/pagesA_lzc/zhaobiao_pay/zhaobiao_pay?id='+shuju.list.id">
 				投标
-			</view>
+			</view> -->
 			<view class="f_right ju_c aic dis_flex" @click="jump" :data-url="SendTenderUrl">
 				发布此类需求
 			</view>

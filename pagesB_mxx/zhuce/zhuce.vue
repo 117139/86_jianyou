@@ -122,12 +122,12 @@
 				var data={
 					phone: this.phone
 				}
-				if(that.bntkg==1){
+				if(that.btnkg==1){
 					return
 				}
-				that.bntkg=1
+				that.btnkg=1
 				service.P_post('/sign/SmsCode', data).then(res => {
-						that.bntkg=0
+						that.btnkg=0
 					console.log(res)
 					if (res.code == 1) {
 						var datas = res.data
@@ -216,10 +216,10 @@
 					return
 				}
 				
-				if(that.bntkg==1){
+				if(that.btnkg==1){
 					return
 				}
-				that.bntkg=1
+				that.btnkg=1
 				service.P_post('/sign/register', data).then(res => {
 					
 					console.log(res)

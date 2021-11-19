@@ -11,7 +11,7 @@
 
 		</view>
 		<view class="pl30  fs20 fwb">
-			欢迎登陆建友咨询信息发布平台
+			欢迎登陆犀牛并购发布平台
 		</view>
 		<view class="pl30 pt35 pr30 mt12">
 			<view class="flex b-b-1 pb5">

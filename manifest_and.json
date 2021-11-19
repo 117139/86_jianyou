@@ -34,7 +34,8 @@
         /* 模块配置 */
         "modules" : {
             "Share" : {},
-            "Maps" : {}
+            "Maps" : {},
+            "OAuth" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -81,14 +82,26 @@
             /* SDK配置 */
             "sdkConfigs" : {
                 "ad" : {},
-                "share" : {},
+                "share" : {
+                    "weixin" : {
+                        "appid" : "wx3abe420195f3227b",
+                        "UniversalLinks" : "https://jianyou365.com"
+                    }
+                },
                 "payment" : {
                     "alipay" : {
-                        "__platform__" : [ "ios", "android" ]
+                        "__platform__" : [ "android" ]
                     },
                     "weixin" : {
-                        "__platform__" : [ "ios", "android" ],
+                        "__platform__" : [ "android" ],
                         "appid" : "wx3abe420195f3227b",
+                        "UniversalLinks" : "https://jianyou365.com"
+                    }
+                },
+                "oauth" : {
+                    "weixin" : {
+                        "appid" : "wx3abe420195f3227b",
+                        "appsecret" : "cdfeaab367851f798adf23648be4a7f5",
                         "UniversalLinks" : "https://jianyou365.com"
                     }
                 },
@@ -97,8 +110,7 @@
                         "appkey_ios" : "61fca32a53af964ea08d08d5531f0edd",
                         "appkey_android" : "7d7d6e446e8d6cd72c53e459f7de32b4"
                     }
-                },
-                "oauth" : {}
+                }
             },
             "icons" : {
                 "android" : {

@@ -6,7 +6,7 @@
 			<text class=" " style="color: #FFFFFF;">{{title}}</text>
 			<text class="pr5 fs14" style="color: #FFFFFF;"> </text>
 		</topbar>
-		<view class=" mian  dis_flex_c aic" v-if="userinfo.is_rz==1">
+		<view class=" mian  dis_flex_c aic" v-if="userinfo.is_examine==1">
 			<image src="/static/images/ma/shenhezhong.png" mode="aspectFill" class="shenhe"></image>
 			<view class="fs15 pt15">
 				审核中
@@ -15,7 +15,7 @@
 				预计在2个工作日内审核完成
 			</view>
 		</view>
-		<view class=" mian  dis_flex_c aic" v-if="userinfo.is_rz==2">
+		<view class=" mian  dis_flex_c aic" v-if="userinfo.is_examine==2">
 			
 			<image src="/static/images/ma/shenhehcenggong.png" mode="aspectFill" class="shenhe"></image>
 			<view class="fs15 pt15">
@@ -28,7 +28,7 @@
 				确定
 			</view>
 		</view>
-		<view class=" mian  dis_flex_c aic" v-if="userinfo.is_rz==3">
+		<view class=" mian  dis_flex_c aic" v-if="userinfo.is_examine==3">
 			
 			<image src="/static/images/ma/shenheshibai.png" mode="aspectFill" class="shenhe"></image>
 			<view class="fs15 pt15">

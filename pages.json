@@ -47,16 +47,15 @@
 			}
 		}
 
-	    ,{
-            "path" : "pages/weixin/weixin",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "绑定手机号",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+		, {
+			"path": "pages/weixin/weixin",
+			"style": {
+				"navigationBarTitleText": "绑定手机号",
+				"enablePullDownRefresh": false
+			}
+
+		}
+	],
 	"subPackages": [{
 
 		"root": "pagesA_lzc",
@@ -321,7 +320,8 @@
 			"path": "chat/chat",
 			"style": {
 				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
 			}
 
 		}, {
@@ -329,8 +329,8 @@
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false,
-				"navigationBarBackgroundColor":"#F43B31",
-				"navigationBarTextStyle":"white"
+				"navigationBarBackgroundColor": "#F43B31",
+				"navigationBarTextStyle": "white"
 				// "navigationStyle": "custom"
 			}
 
@@ -345,6 +345,13 @@
 			"path": "webhtml/webhtml",
 			"style": {
 				"navigationBarTitleText": "犀牛并购",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "chat/jubao",
+			"style": {
+				"navigationBarTitleText": "举报",
 				"enablePullDownRefresh": false
 			}
 

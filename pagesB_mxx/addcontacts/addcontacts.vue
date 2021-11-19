@@ -150,7 +150,7 @@
 		},
 
 		onHide() {
-			uni.removeStorageSync('lxr_msg')
+			
 		},
 		onLoad(option) {
 			that = this
@@ -196,16 +196,19 @@
 						}
 						
 						that.array=datas
-						that.name=lxr_msg.name
-						that.id=lxr_msg.id
-						that.phone=lxr_msg.phone
-						that.city[0]=lxr_msg.province
-						that.city[1]=lxr_msg.city
-						that.city[2]=lxr_msg.county
-						that.address=lxr_msg.address
-						that.sex=lxr_msg.sex
-						that.index=that.array.indexOf(lxr_msg.position)
-						that.is_default=lxr_msg.is_default
+						if(lxr_msg){
+							that.name=lxr_msg.name
+							that.id=lxr_msg.id
+							that.phone=lxr_msg.phone
+							that.city[0]=lxr_msg.province
+							that.city[1]=lxr_msg.city
+							that.city[2]=lxr_msg.county
+							that.address=lxr_msg.address
+							that.sex=lxr_msg.sex
+							that.index=that.array.indexOf(lxr_msg.position)
+							that.is_default=lxr_msg.is_default
+						}
+						uni.removeStorageSync('lxr_msg')
 					} else {
 						if (res.msg) {
 							uni.showToast({

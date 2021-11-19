@@ -1,5 +1,10 @@
 <template>
 	<view>
+		<topbar bg_color="#ffffff">
+			<text class="iconfont icon-back-line" @tap="back"></text>
+			<text>{{chat_name}}</text>
+			<text class="" @click="jump" data-url="/pagesA_lzc/chat/jubao">举报</text>
+		</topbar>
 		<view class="content" @touchstart="hideDrawer">
 			<!-- <scroll-view class="msg-list" scroll-y="true" :scroll-with-animation="scrollAnimation" :scroll-top="scrollTop"
 			 :scroll-into-view="scrollToView" @scrolltoupper="loadHistory" upper-threshold="50"> -->
@@ -316,6 +321,7 @@
 				msg_user:'',
 				isFocus:false,
 				page: '',
+				chat_name:''
 			};
 		},
 		computed: {
@@ -403,6 +409,11 @@
 		},
 		methods: {
 			...mapMutations(['logout', 'login','_send']),
+			back(){
+				uni.navigateBack({
+					delta:1
+				})
+			},
 			onRetry(index) {
 				that.datas=[]
 				that.page=''
@@ -669,6 +680,7 @@
 							uni.setNavigationBarTitle({
 								title:res.user.toInfo.nick
 							})   
+							that.chat_name=res.user.toInfo.nick
 							console.log(datas)
 							
 							

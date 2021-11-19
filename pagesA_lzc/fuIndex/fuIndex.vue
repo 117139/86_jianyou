@@ -96,7 +96,7 @@
 				<text class="titleRed">服务领域</text>
 			</view>
 			<view class="sa_body dis_flex aic" style="flex-wrap: wrap;">
-				<view class="sa_body_item bs" v-for="item in shuju.service.split(',')">{{item}}</view>
+				<view v-if="shuju.service" class="sa_body_item bs" v-for="item in shuju.service.split(',')">{{item}}</view>
 			</view>
 		</view>
 		<!-- 个人资料 -->
@@ -116,7 +116,7 @@
 				</view>
 				<view class="pdi">
 					<text class="pd_text1">从业开始时间:</text>
-					<text class="pd_text1 pd_text3 pd_text2">{{shuju.start_time.split('-')[0]}}</text>
+					<text class="pd_text1 pd_text3 pd_text2">{{shuju.start_time.split('-')[0]||'--'}}</text>
 					<text>年</text>
 				</view>
 				<view class="pdi">
